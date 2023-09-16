@@ -6,18 +6,16 @@
 // the maximum component in every direction of the key
 Point key_get_dimensions(Key key) {
 	Point* k = key.data;
-	Point d[3];
+	Point d[2];
 	d[0] = 0;
 	d[1] = 0;
-	d[2] = 0;
 	
-	Point mask[3];
+	Point mask[2];
 	mask[0] = POINT_MASK_X;
 	mask[1] = POINT_MASK_Y;
-	mask[2] = POINT_MASK_Z;
 	
 	for (int i = 0; i < key.length; i++) {
-		for (int j = 0; j < 3; j++) {
+		for (int j = 0; j < 2; j++) {
 			Point value = k[i] & mask[j];
 			if (value > d[j]) {
 				d[j] = value;
@@ -25,18 +23,18 @@ Point key_get_dimensions(Key key) {
 		}
 	}
 	
-	return d[0] + d[1] + d[2];
+	return d[0] + d[1];
 }
 
 // Keys need to be adjusted if using higher face numbers,
 // which correspond to point coordinates outside the region
 Key key_get_offset(Key key, uint8_t face) {
-	if (face < 3) return key;
+	if (face < 2) return key;
 	
 	Key retval = key;
 	
 	for (size_t i = 0; i < key.length; i++) {
-		retval.data[i] = point_get_offset(key.data[i], face - 3);
+		retval.data[i] = point_get_offset(key.data[i], face - 2);
 	}
 	
 	return retval;
@@ -75,7 +73,7 @@ int key_has_larger_single_neighbor(Key key, uint8_t* places) {
 		uint8_t count = 0;
 		int ptbasekey = key.data[i];
 		
-		for (uint8_t f = 0; f < 6; f++) {
+		for (uint8_t f = 0; f < 4; f++) {
 			count += places[ptbasekey + offsets_lut[f]];
 		}
 		
@@ -119,7 +117,7 @@ int key_is_connected_without(Key key, int index, uint8_t* places) {
 		
 		int ptbasekey = point_keys[i];
 		
-		for (uint8_t f = 0; f < 6; f++) {
+		for (uint8_t f = 0; f < 4; f++) {
 			
 			ptkey = ptbasekey + offsets_lut[f];
 			

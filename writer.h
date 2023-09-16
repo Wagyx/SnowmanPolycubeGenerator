@@ -7,7 +7,7 @@
 #ifndef WRITER_H
 #define WRITER_H
 
-typedef enum {WriteBitFace, WritePCube} WriterMode;
+typedef enum {WriteBitFace, WriteBits} WriterMode;
 
 typedef struct {
 	OutputStream* stream;

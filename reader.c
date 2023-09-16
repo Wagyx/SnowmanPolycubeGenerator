@@ -1,6 +1,7 @@
 #include "reader.h"
-#include "pcube.h"
+// #include "pcube.h"
 #include "bitface.h"
+#include "bitsFormat.h"
 
 Reader* reader_create(char* filename, ReaderMode mode) {
 	InputStream* stream = input_stream_create(filename);
@@ -22,11 +23,10 @@ Reader* reader_create(char* filename, ReaderMode mode) {
 			}
 			retval->count = bitface_read_count(retval->stream, retval->length);
 			break;
-		case ReadPCube:
-			printf("Starting file reader in PCube mode");
-			pcube_read_header(retval->stream);
-			retval->count = pcube_read_count(retval->stream);
-			retval->length = pcube_read_n(retval->stream);
+		case ReadBits:
+			printf("Starting file reader in Bits mode");
+			bitsformat_read_header(retval->stream);
+			retval->length = bitsformat_read_n(retval->stream);
 			if (input_stream_is_compressed(retval->stream)) printf(" with compression");
 			printf(".\n");
 			break;
@@ -56,8 +56,8 @@ uint64_t reader_read_keys(Reader* reader, Key* output_keys) {
 		case ReadBitFace:
 			n_read = bitface_read_keys(reader->stream, output_keys, reader->length, READER_MAX_COUNT);
 			break;
-		case ReadPCube:
-			n_read = pcube_read_keys(reader->stream, output_keys, READER_MAX_COUNT);
+		case ReadBits:
+			n_read = bitsformat_read_keys(reader->stream, output_keys, READER_MAX_COUNT);
 			break;
 	}
 	

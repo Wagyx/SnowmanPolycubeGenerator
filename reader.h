@@ -9,7 +9,7 @@
 
 #define READER_MAX_COUNT 10000
 
-typedef enum {ReadBitFace, ReadPCube} ReaderMode;
+typedef enum {ReadBitFace,ReadBits} ReaderMode;
 
 typedef struct {
 	InputStream* stream;

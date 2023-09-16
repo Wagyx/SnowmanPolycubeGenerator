@@ -179,7 +179,7 @@ Key bitface_unpack(char* buffer, uint8_t length) {
 	
 	for (int i = 0; i < length; i++) {
 		RawPoint p = points[i];
-		retval.data[i] = point_from_coords(p.data[0], p.data[1], p.data[2]);
+		retval.data[i] = point_from_coords(p.data[0], p.data[1]);
 	}
 	
 	network_sort(retval.data, length, point_compare);

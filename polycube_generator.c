@@ -73,9 +73,9 @@ Reader* build_reader(char* opt, char* filename) {
 	
 	ReaderMode mode = ReadBitFace;
 	
-	if (len > 6) {
-		if(strcmp(&filename[len-6], ".pcube") == 0) {
-			mode = ReadPCube;
+	if (len > 5) {
+		if(strcmp(&filename[len-5], ".bits") == 0) {
+			mode = ReadBits;
 		}
 	}
 	
@@ -90,9 +90,9 @@ Writer* build_writer(char* opt, char* filename, uint8_t new_length) {
 	
 	int compressed = strcmp(opt, "-oz") == 0;
 	
-	if (len > 6) {
-		if(strcmp(&filename[len-6], ".pcube") == 0) {
-			mode = WritePCube;
+	if (len > 5) {
+		if(strcmp(&filename[len-5], ".bits") == 0) {
+			mode = WriteBits;
 		}
 	}
 	
@@ -226,7 +226,7 @@ int main (int argc, char** argv) {
 		
 		Key start;
 		if (reader == NULL) {
-			Point p = point_from_coords(1,1,1);
+			Point p = point_from_coords(1,1);
 			
 			start.data[0] = p;
 			p = point_get_offset(p, 0);
