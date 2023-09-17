@@ -13,5 +13,7 @@ make all
 ./polyomino_generator 13 -o results/polyominoes_13.bits -i results/polyominoes_12.bits
 ./polyomino_generator 14 -o results/polyominoes_14.bits -i results/polyominoes_13.bits
 ./polyomino_generator 15 -o results/polyominoes_15.bits -i results/polyominoes_14.bits
-./polyomino_generator 16 -o results/polyominoes_16.bits -i results/polyominoes_15.bits
-./polyomino_generator 17 -o results/polyominoes_17.bits -i results/polyominoes_16.bits
+# ./polyomino_generator 16 -o results/polyominoes_16.bits -i results/polyominoes_15.bits
+# ./polyomino_generator 17 -o results/polyominoes_17.bits -i results/polyominoes_16.bits
+# ./polyomino_generator 18 -o results/polyominoes_18.bits -i results/polyominoes_17.bits
+# ./polyomino_generator 19 -o results/polyominoes_19.bits -i results/polyominoes_18.bits
