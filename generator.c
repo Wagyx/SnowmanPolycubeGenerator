@@ -78,8 +78,8 @@ int generator_create_candidates(Key key, size_t length, Point* candidates, uint8
 // Eliminate further rotations by checking if other dimensions are not equal
 // Otherwise we compute all rotations
 uint32_t generator_create_rotations(Key key, size_t length, Point dim, Key* rkeys) {
-	uint8_t d0 = POINT_GET_X(dim);
-	uint8_t d1 = POINT_GET_Y(dim);
+	// uint8_t d0 = POINT_GET_X(dim);
+	// uint8_t d1 = POINT_GET_Y(dim);
 	uint32_t rotation_bits = ROT_ALL;
 	
 	Point bigpoint = POINT_MAX;
@@ -130,10 +130,9 @@ int generator_generate(Key key, size_t new_length, Key* output, uint8_t* spacema
 	size_t old_length = new_length - 1;
 	int n_candidates = old_length * 4;
 	Point candidates[n_candidates];
-	
 	// Generate initial candidates from existing key faces
 	n_candidates = generator_create_candidates(key, old_length, candidates, spacemap);
-	
+
 	// Generate all relevant rotated keys for inside dimensions
 	Point dimensions = key_get_dimensions(key);
 	Key rotations_inside[NUM_ROTATIONS];
@@ -170,8 +169,8 @@ int generator_generate(Key key, size_t new_length, Key* output, uint8_t* spacema
 			
 			// If this is a zero indexed face, we need to increase the candidate index 
 			// to match the bounds (minimum of 1 in all dimensions)
-			if (face > 2) {//TODO
-				candidate = point_get_offset(candidate, face - 3);
+			if (face > 1) {
+				candidate = point_get_offset(candidate, face - 2);
 			}
 		}
 		
@@ -181,7 +180,7 @@ int generator_generate(Key key, size_t new_length, Key* output, uint8_t* spacema
 		current_key.length = new_length;
 		PointData data = point_get_data(candidate, candidate_dim);
 		for (int j = 0; j < NUM_ROTATIONS; j++) {
-			if (!(candidate_rotations_mask & (1 << j))) continue;
+			// if (!(candidate_rotations_mask & (1 << j))) continue;
 			
 			// Generate candidate rotated to relevant rotation
 			Point candidate_rotated = point_rotate(data, j);

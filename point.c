@@ -4,13 +4,10 @@
 // This means we can snap to a given dimension by using the dimension index * 4
 const uint8_t point_rotations_lut[][2] = {
 	{0,1},
-	{0,3},
 	{2,3},
-	{2,1}
-	// {1,0},
-	// {3,0},
-	// {3,2},
-	// {1,2}
+	{1,2},
+	{3,0}
+
 };
 
 // This "PointData" includes the original point

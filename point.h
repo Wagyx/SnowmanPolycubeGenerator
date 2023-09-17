@@ -3,7 +3,7 @@
 
 #include <stdint.h>
 
-#define POINT_SPACEMAP_SIZE 32768
+#define POINT_SPACEMAP_SIZE 16384 //should match the number of effective bits, here it is 14
 #define POINT_MIN 0
 #define POINT_MAX 0x3FFF
 #define POINT_MASK_X 0x7F

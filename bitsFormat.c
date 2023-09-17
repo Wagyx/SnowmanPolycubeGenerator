@@ -8,13 +8,10 @@
 
 void bitsformat_write_header(OutputStream *stream, uint8_t compressed)
 {
-	printf("bitsformat_write_header\n");
 }
 
 size_t bitsformat_pack(Key key, char *buffer)
 {
-	printf("bitsformat_pack\n");
-
 	Point lDims = key_get_dimensions(key);
 	buffer[0] = POINT_GET_X(lDims);
 	buffer[1] = POINT_GET_Y(lDims);
@@ -34,19 +31,14 @@ size_t bitsformat_pack(Key key, char *buffer)
 
 void bitsformat_write_keys(OutputStream *stream, Key *keys, uint64_t count)
 {
-	printf("bitsformat_write_keys\n");
-
 	for (uint64_t i = 0; i < count; i++)
 	{
 		bitsformat_write_key(stream, keys[i]);
 	}
-	// printf("done bitsformat_write_keys\n");
-
 }
 
 void bitsformat_write_key(OutputStream *stream, Key key)
 {
-	printf("bitsformat_write_key\n");
 	Point lDims = key_get_dimensions(key);
 	uint8_t dim[2];
 	dim[0] = POINT_GET_X(lDims);
@@ -56,17 +48,11 @@ void bitsformat_write_key(OutputStream *stream, Key key)
 	uint16_t offsets[2];
 	offsets[0] = dim[1];
 	offsets[1] = 1;
-	printf("\tdim0 %d\n",dim[0]);
-	printf("\tdim1 %d\n",dim[1]);
-
-
 
 	// zero padding on the ceil bytes
 	uint16_t bits = dim[0] * dim[1];
-	printf("\tbits %d \n",bits);
 	uint8_t bytes = bits >> 3;
 	bytes += bits > (bytes << 3);
-	printf("\tbytes %d\n",bytes);
 	uint8_t data[bytes];
 	memset(data, 0, bytes);
 
@@ -87,7 +73,6 @@ void bitsformat_write_key(OutputStream *stream, Key key)
 
 int bitsformat_read_header(InputStream *stream)
 {
-	printf("bitsformat_read_header\n");
 	return 1;
 }
 
@@ -95,7 +80,6 @@ int bitsformat_read_header(InputStream *stream)
 // Must be called in the shape area of the file
 uint8_t bitsformat_read_n(InputStream *stream)
 {
-	printf("bitsformat_read_n\n");
 	long offset = input_stream_get_offset(stream);
 
 	Key test;
@@ -111,8 +95,6 @@ uint8_t bitsformat_read_n(InputStream *stream)
 // Otherwise returns 1 on success
 int bitsformat_read_key(InputStream *stream, Key *key_output)
 {
-	printf("bitsformat_read_key\n");
-
 	Key retval;
 
 	uint8_t dim[2];
@@ -159,8 +141,6 @@ int bitsformat_read_key(InputStream *stream, Key *key_output)
 
 uint64_t bitsformat_read_keys(InputStream *stream, Key *output_keys, uint64_t count)
 {
-	printf("bitsformat_read_keys\n");
-
 	uint64_t i = 0;
 	for (i = 0; i < count; i++)
 	{
