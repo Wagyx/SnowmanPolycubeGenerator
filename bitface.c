@@ -173,7 +173,7 @@ Key bitface_unpack(char* buffer, uint8_t length) {
 		}
 	}
 	
-	if (points_index != length) printf("Warning: found malformed polycube\n");
+	if (points_index != length) printf("Warning: found malformed polyomino\n");
 	
 	normalize(points, length);
 	

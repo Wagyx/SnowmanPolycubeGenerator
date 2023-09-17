@@ -59,12 +59,12 @@ void thread_pool_set_input_reader(ThreadPool* pool, Reader* reader) {
 	
 	uint64_t count = reader_get_count(reader);
 	if (count > 0) {
-		printf("Found %lld polycubes in input file\n", (long long int) count);
+		printf("Found %lld polyominos in input file\n", (long long int) count);
 		
 		pool->total_input_count = count;
 		thread_pool_enable_updates(pool);
 	} else {
-		printf("Could not get count of polycubes in input file. Progress updates disabled.\n");
+		printf("Could not get count of polyominos in input file. Progress updates disabled.\n");
 	}
 }
 

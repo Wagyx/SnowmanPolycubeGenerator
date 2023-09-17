@@ -54,7 +54,7 @@ void results_write(Results* r) {
 }
 
 void print_usage() {
-	printf("Usage: polycube_generator <size> [options...]\n");
+	printf("Usage: polyomino_generator <size> [options...]\n");
 }
 
 char* get_value(int* index, int argc, char** argv) {
@@ -117,7 +117,7 @@ void convert_files(Reader* reader, Writer* writer) {
 	writer_write_count(writer, total);
 	writer_destroy(writer);
 	
-	printf("Processed %lld polycubes.\n", (long long int) total);
+	printf("Processed %lld polyominos.\n", (long long int) total);
 }
 
 int main (int argc, char** argv) {
@@ -252,7 +252,7 @@ int main (int argc, char** argv) {
 			for (int i = 0; i < target_length - start_length; i++) {
 				int length = i + start_length + 1;
 				uint64_t result = thread_pool_get_total(pool, i);
-				printf("%lld polycubes found of length %d                      \n", 
+				printf("%lld polyominos found of length %d                      \n", 
 					(long long int)result, i + start_length + 1);
 				
 				results_add(results, length, result);
@@ -286,7 +286,7 @@ int main (int argc, char** argv) {
 			for (int i = 0; i < new_length - start_length; i++) {
 				int length = i + start_length + 1;
 				uint64_t result = thread_pool_get_total(pool, i);
-				printf("%lld polycubes found of length %d                      \n", 
+				printf("%lld polyominos found of length %d                      \n", 
 					(long long int)result, i + start_length + 1);
 				
 				results_add(results, length, result);
@@ -296,7 +296,7 @@ int main (int argc, char** argv) {
 		thread_pool_destroy(pool);
 	}
 	
-	if (!output_all) printf("%lld polycubes found of length %d                      \n", (long long int)n_generated, new_length);
+	if (!output_all) printf("%lld polyominos found of length %d                      \n", (long long int)n_generated, new_length);
 	
 	double diff = difftime(time(NULL), start_time);
 	

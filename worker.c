@@ -91,7 +91,7 @@ void worker_generate_level(GenerationData* gdata, uint8_t* spacemap) {
 	gdata->total += a;
 }
 
-// This function processes a single polycube
+// This function processes a single polyomino
 // at the required level for output.
 // Returns the number of output_keys generated.
 // Returns -1 if the GenerationData is complete

@@ -1,4 +1,4 @@
-TARGET = polycube_generator
+TARGET = polyomino_generator
 LIBS = -lm -pthread -lz
 CC = gcc
 CFLAGS = -g -Wall -O2

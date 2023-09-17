@@ -59,7 +59,7 @@ Key key_get_comparison_maximum(uint8_t length) {
 // This is the faster function to determine if a key was generated
 // from the maximum possible added point ("source_index").
 // Points with single neighbors are guaranteed to not be considered
-// "cut points" of the polycube.
+// "cut points" of the polyomino.
 // If this function finds such a point, the result will be thrown out
 int key_has_larger_single_neighbor(Key key, uint8_t* places) {
 	int retval = 0;
@@ -93,7 +93,7 @@ int key_has_larger_single_neighbor(Key key, uint8_t* places) {
 // This is the slower function to determine if a key was generated
 // from the maximum possible added point ("source_index").
 // This function will run for every candidate alternative "source_index"
-// and tries to traverse the entire cube.
+// and tries to traverse the entire square.
 // If it fails to find all points, the caller will move to the next
 // alternative "source_index".
 int key_is_connected_without(Key key, int index, uint8_t* places) {
@@ -134,7 +134,7 @@ int key_is_connected_without(Key key, int index, uint8_t* places) {
 		if (point_index >= source_length) break;
 	}
 	
-	// In case we don't fully traverse the cube, we need to make sure
+	// In case we don't fully traverse the square, we need to make sure
 	// the map is reset for the next check
 	for (uint8_t i = 0; i < key.length; i++) {
 		places[key.data[i]] = 0;

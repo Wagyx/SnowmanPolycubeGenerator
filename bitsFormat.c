@@ -76,7 +76,7 @@ int bitsformat_read_header(InputStream *stream)
 	return 1;
 }
 
-// Gets the number of cubes to expect in future shapes
+// Gets the number of squares to expect in future shapes
 // Must be called in the shape area of the file
 uint8_t bitsformat_read_n(InputStream *stream)
 {
