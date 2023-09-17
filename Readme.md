@@ -1,6 +1,7 @@
 # Polyomino Generator in C
 
-A 2D polyomino generator based on [this repository](https://github.com/snowmanam2/SnowmanPolycubeGenerator). This version is using the exact same logic but was made to work a dimension lower where cubes are replaced by squares. 
+A 2D polyomino generator based on [this repository](https://github.com/snowmanam2/SnowmanPolycubeGenerator). This version is using the exact same logic but was made to work a dimension lower where cubes are replaced by squares.
+Please check the [A000988](https://oeis.org/A000988) sequence on the OEIS website to take a look at a more proper definition, the enumeration results and main references on the topic.
 
 ## Compiling
 
@@ -74,7 +75,6 @@ This program can read or write in a basic binary .bits format where each polyomi
 2. (1 byte) dimension along y of the polyomino
 2. (n bytes) Polyomino data where n = ceil(x\*y/8). The data is a flattened representation of the x*y grid that contains the poyomino where each bit indicates whether a square exists in the cell.
 Compressing the output file with gzip can reach around 55% compression rate.
-
 
 ## Known Areas for Improvement
 - rotations could be excluded when the x and y dimensions are different.

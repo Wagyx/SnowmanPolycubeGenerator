@@ -71,7 +71,8 @@ char* get_value(int* index, int argc, char** argv) {
 Reader* build_reader(char* opt, char* filename) {
 	int len = strlen(filename);
 	
-	ReaderMode mode = ReadBitFace;
+	// ReaderMode mode = ReadBitFace;
+	ReaderMode mode = ReadBits;
 	
 	if (len > 5) {
 		if(strcmp(&filename[len-5], ".bits") == 0) {
@@ -86,7 +87,8 @@ Reader* build_reader(char* opt, char* filename) {
 Writer* build_writer(char* opt, char* filename, uint8_t new_length) {
 	int len = strlen(filename);
 	
-	WriterMode mode = WriteBitFace;
+	// WriterMode mode = WriteBitFace;
+	WriterMode mode = WriteBits;
 	
 	int compressed = strcmp(opt, "-oz") == 0;
 	
